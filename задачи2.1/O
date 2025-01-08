@@ -1,0 +1,7 @@
+N = int(input())
+M = int(input())
+T = int(input())
+a = N * 60 + M + T
+b = (a // 60) % 24
+c = a % 60 
+print(f'{b:02}:{c:02}')

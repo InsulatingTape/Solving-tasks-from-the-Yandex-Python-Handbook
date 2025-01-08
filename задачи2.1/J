@@ -1,0 +1,9 @@
+t = input()
+a = int(input())
+b = int(a // 100)
+c = a % 10
+d = a // 10 % 10
+print('Группа №', (b), '.', sep='')
+print((c), (t), '', sep='. ')
+print('Шкафчик: ', (a), '.', sep='')
+print('Кроватка: ', (d), '.', sep='')

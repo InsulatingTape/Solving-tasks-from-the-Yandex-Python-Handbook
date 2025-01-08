@@ -1,0 +1,7 @@
+a = float(input())
+b = float(input())
+c = float(input())
+r = 0.1
+d = float(b) - float(a)
+e = float(d) / float(c)
+print(f"{(e):0<4}")

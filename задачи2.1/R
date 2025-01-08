@@ -1,0 +1,4 @@
+b = input()
+a = int(input())
+c = a - int(b, 2)
+print(c)

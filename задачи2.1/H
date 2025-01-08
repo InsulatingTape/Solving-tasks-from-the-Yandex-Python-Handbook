@@ -1,0 +1,4 @@
+a = int(input())
+phrase = input()
+b = 'Я больше никогда не буду писать '
+print((b + '"' + phrase + '"' + '!' + '\n') * a)

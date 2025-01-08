@@ -1,0 +1,4 @@
+n_1 = int(95)
+n_2 = int(input())
+n_3 = int(n_2 - n_1)
+print(n_3)

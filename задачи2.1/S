@@ -1,0 +1,15 @@
+k = input()
+a = int(input())
+b = int(input())
+c = int(input())
+v = (a * b)
+t = (c - a * b)
+p = 'руб'
+g = str(b) + 'кг' + ' * ' + str(a) + 'руб/кг'
+print('=' * 16, 'Чек', '=' * 16, sep='')
+print('Товар: ', f'{k:>28}', sep='')
+print(f'Цена: {g:>29}')
+print('Итого: ', f'{v:25}', p, sep='')
+print('Внесено: ', f'{c:23}', p, sep='')
+print('Сдача: ', f'{t:25}', p, sep='')
+print('=' * 35)
