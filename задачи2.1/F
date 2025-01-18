@@ -7,3 +7,15 @@ print(k, ' - ', (b), 'кг', ' - ', (a), 'руб/кг', sep='')
 print('Итого: ', (a * b), 'руб', sep='')
 print('Внесено: ', (c), 'руб', sep='')
 print('Сдача: ', (c - a * b), 'руб', sep='')
+
+
+#2
+k = input()
+a = int(input())
+b = int(input())
+c = int(input())
+print('Чек')
+print(f"{k} - {b}кг - {a}руб/кг")
+print(f"Итого: {a * b}руб")
+print(f"Внесено: {c}руб")
+print(f"Сдача: {int(c - a * b)}руб")

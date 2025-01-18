@@ -7,3 +7,15 @@ print('Группа №', (b), '.', sep='')
 print((c), (t), '', sep='. ')
 print('Шкафчик: ', (a), '.', sep='')
 print('Кроватка: ', (d), '.', sep='')
+
+
+#2
+t = input()
+a = int(input())
+b = int(a // 100)
+c = a % 10
+d = a // 10 % 10
+print(f"Группа №{b}.")
+print(f"{c}. {t}.")
+print(f"Шкафчик: {a}.")
+print(f"Кроватка: {d}.")
