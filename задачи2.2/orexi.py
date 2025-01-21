@@ -183,6 +183,24 @@ print(min_number, max_number)
 
 #надо исправить чтоб минимальный ответ был от 10
 
+number = input()
+a = number[0]
+b = number[1]
+c = number[2]
+numberS = [ 
+    int(a + b) if a != '0' else 10, 
+    int(a + c) if a != '0' else 10,
+    int(b + a) if b != '0' else 10, 
+    int(b + c) if b != '0' else 10, 
+    int(c + a) if c != '0' else 10, 
+    int(c + b) if c != '0' else 10
+]
+min_number = min(numberS)
+max_number = max(numberS)
+print(min_number, max_number)
+
+#исправила. только все равно что-то не так это невыносимо.
+
 
 O
 
