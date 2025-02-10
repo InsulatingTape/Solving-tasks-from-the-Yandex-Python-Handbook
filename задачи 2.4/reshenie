@@ -1,0 +1,277 @@
+A
+
+n = int(input())
+for i in range(1, n + 1):
+    for j in range(1, n + 1):
+        print(i * j, end=" ")
+    print()
+
+B 
+
+n = int(input())  
+for j in range(1, n + 1):  
+    for i in range(1, n + 1):  
+        print(f"{i} * {j} = {i * j}")
+
+C 
+
+n = int(input())
+num = 1
+row = 1
+while num <= n:
+    line = ""
+    count = 0
+    while count < row and num <= n:
+        if line == "":
+            line = str(num)
+        else:
+            line = line + " " + str(num)
+        num = num + 1
+        count = count + 1
+    print(line)
+    row = row + 1
+
+D 
+
+n = int(input())  
+print(sum(sum(map(int, input())) for _ in range(n)))
+
+E 
+
+n = int(input())  
+count = 0  
+for _ in range(n):  
+    found = False  
+    while True:  
+        word = input()  
+        if word == "ВСЁ":  
+            break  
+        if word == "зайка":  
+            found = True  
+    if found:  
+        count += 1  
+print(count)
+
+F 
+
+n = int(input())  
+numbers = [int(input()) for _ in range(n)]  
+a = numbers[0]  
+for b in numbers[1:]:  
+    while b:
+        a, b = b, a % b  
+print(a)
+
+G 
+
+n = int(input())
+for i in range(1, n + 1):
+    start_time = 3 + i - 1
+    for t in range(start_time, 0, -1):
+        print(f"До старта {t} секунд(ы)")
+    print(f"Старт {i}!!!")
+
+H 
+
+n = int(input())
+winner = ""
+max_sum = -1
+for _ in range(n):
+    name = input()
+    number = input()
+    digit_sum = sum(map(int, number))
+    if digit_sum >= max_sum:
+        max_sum = digit_sum
+        winner = name
+print(winner)
+
+I 
+
+n = int(input())
+result = ""
+for _ in range(n):
+    num_str = input()
+    max_digit = max(num_str)
+    result += max_digit
+print(result)
+
+J 
+
+n = int(input())
+print("А Б В")
+for a in range(1, n - 1):
+    for b in range(1, n - a):
+        c = n - a - b
+        if c >= 1:
+            print(a, b, c)
+
+K 
+
+N = int(input())
+count = 0
+for _ in range(N):
+    num = int(input())
+    if num < 2:
+        continue
+    is_prime = True
+    for i in range(2, int(num ** 0.5) + 1):
+        if num % i == 0:
+            is_prime = False
+            break
+    if is_prime:
+        count += 1
+print(count)
+
+L
+
+n = int(input())
+m = int(input())
+width = len(str(n * m))
+for i in range(n):
+    for j in range(m):
+        num = i * m + j + 1
+        if j < m - 1:
+            print(f"{num:>{width}}", end=" ")
+        else:
+            print(f"{num:>{width}}", end="")
+    print()
+
+M
+
+n = int(input())
+m = int(input())
+max_num = n * m
+width = len(str(max_num))
+for i in range(1, n + 1):
+    for j in range(1, m + 1):
+        num = i + (j - 1) * n
+        if j < m:
+            print(f"{num:>{width}}", end=" ")
+        else:
+            print(f"{num:>{width}}", end="")
+    print()
+
+N
+
+n = int(input())
+m = int(input())
+max_num = n * m
+width = len(str(max_num))
+for i in range(n):
+    row_start = i * m + 1
+    if i % 2 == 0:
+        for j in range(m):
+            num = row_start + j
+            if j < m - 1:
+                print(f"{num:>{width}}", end=" ")
+            else:
+                print(f"{num:>{width}}", end="")
+    else:
+        for j in range(m):
+            num = row_start + (m - 1 - j)
+            if j < m - 1:
+                print(f"{num:>{width}}", end=" ")
+            else:
+                print(f"{num:>{width}}", end="")
+    print()
+
+O
+
+n, m = int(input()), int(input())
+w = len(str(n * m))
+for i in range(n):
+    for j in range(m):
+        num = j * n + (i + 1) if j % 2 == 0 else j * n + (n - i)
+        print(f"{num:>{w}}", end=" " if j < m - 1 else "\n")
+
+P
+
+n = int(input())
+w = int(input())
+row_length = n * w + (n - 1)
+for i in range(1, n + 1):
+    row_str = ""
+    for j in range(1, n + 1):
+        product = i * j
+        cell = f"{product:^{w}}"
+        row_str += cell
+        if j < n:
+            row_str += "|"
+    print(row_str)
+    if i < n:
+        print("-" * len(row_str))
+
+Q
+
+N = int(input())
+count = 0
+for _ in range(N):
+    s = input()
+    if s == s[::-1]:
+        count += 1
+print(count)
+
+R
+
+n_total = int(input())
+current = 1
+r = 0
+total = 0
+while total < n_total:
+    r += 1
+    total += r
+last_row_count = n_total - (r * (r - 1) // 2)
+start_last = (r * (r - 1) // 2) + 1
+last_row_str = ""
+for i in range(last_row_count):
+    if i > 0:
+        last_row_str += " "
+    last_row_str += str(start_last + i)
+last_width = len(last_row_str)
+current = 1
+for row in range(1, r + 1):
+    if row < r:
+        count = row
+    else:
+        count = last_row_count
+    row_str = ""
+    for i in range(count):
+        if i > 0:
+            row_str += " "
+        row_str += str(current)
+        current += 1
+    L = len(row_str)
+    left_padding = (last_width - L) // 2
+    right_padding = last_width - L - left_padding
+    print(" " * left_padding + row_str + " " * right_padding)
+
+S
+
+n = int(input())
+max_val = (n + 1) // 2
+width = len(str(max_val))
+for i in range(n):
+    for j in range(n):
+        value = min(i, j, n - 1 - i, n - 1 - j) + 1
+        if j == 0:
+            print(f"{value:>{width}}", end="")
+        else:
+            print(f" {value:>{width}}", end="")
+    print()
+
+T
+
+n = int(input())
+max_sum = -1
+best_base = 2
+for base in range(2, 11):
+    num = n
+    total = 0
+    while num > 0:
+        total += num % base
+        num //= base
+    
+    if total > max_sum:
+        max_sum = total
+        best_base = base
+print(best_base)
