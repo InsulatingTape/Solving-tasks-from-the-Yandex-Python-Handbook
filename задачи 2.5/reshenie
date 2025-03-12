@@ -1,0 +1,216 @@
+A
+
+N = int(input())
+print("YES" if all(input()[0] in 'абв' for _ in range(N)) else "NO")
+
+B 
+
+print(*input(), sep="\n")
+
+C 
+
+l = int(input())
+n = int(input())
+
+for _ in range(n):
+    title = input()
+    if len(title) <= l:
+        print(title)
+    else:
+        print(title[:l-3] + "...")
+
+D 
+
+while True:
+    line = input()
+    if not line:
+        break
+
+    if line.endswith("@@@"):
+        continue
+
+    if line.startswith("##"):
+        line = line[2:]
+
+    print(line)
+
+E 
+
+print("YES" if (line := input()) == line[::-1] else "NO")
+
+F 
+
+n = int(input())
+count = 0
+for _ in range(n):
+    line = input().split()
+    count += line.count('зайка')
+print(count)
+
+G 
+
+numbers = input().split()
+num1 = int(numbers[0])
+num2 = int(numbers[1])
+print(num1 + num2)
+
+H 
+
+n = int(input())
+for _ in range(n):
+    text = input()
+    print((i + 1) if (i := text.find('зайка')) >= 0 else 'Заек нет =(')
+
+I 
+
+while True:
+    line = input()
+    if not line:
+        break
+
+    comment_index = line.find("#")
+    if comment_index == -1:
+        print(line)
+    elif comment_index > 0:
+        print(line[:comment_index].rstrip())
+
+J 
+
+counts = {}
+for line in iter(input, 'ФИНИШ'):
+    for char in line.lower():
+        if char != ' ':
+            if char in counts:
+                counts[char] += 1
+            else:
+                counts[char] = 1
+
+most_frequent = ''
+max_count = 0
+for char in sorted(counts):
+    if counts[char] > max_count:
+        most_frequent = char
+        max_count = counts[char]
+
+print(most_frequent)
+
+K 
+
+n = int(input())
+pages = []
+for _ in range(n):
+    pages.append(input())
+query = input().lower()
+
+for page in pages:
+    if query in page.lower():
+        print(page)
+
+L
+
+n = int(input())
+variant = ["Манная", "Гречневая", "Пшённая", "Овсяная", "Рисовая"]
+for i in range(n):
+    print(variant[i % 5])
+
+M
+
+n = int(input())
+numbers = []
+for _ in range(n):
+    numbers.append(int(input()))
+p = int(input())
+
+for num in numbers:
+    print(num ** p)
+
+N
+
+numbers = list(map(int, input().split()))
+p = int(input())
+result = ' '.join(map(str, [num ** p for num in numbers]))
+print(result)
+
+O
+
+numbers = list(map(int, input().split()))
+
+if not numbers:
+    print(0)
+else:
+    nod = numbers[0]
+    for num in numbers[1:]:
+        a = nod
+        b = num
+        while b:
+            a, b = b, a % b
+        nod = a
+    print(nod)
+
+P
+
+l = int(input())
+n = int(input())
+header = ""
+
+for _ in range(n):
+    line = input()
+    if len(header) + len(line) <= l:
+        header += line
+    else:
+        remaining_space = l - len(header)
+        if remaining_space > 3:
+            header += line[:remaining_space - 3] + "..."
+        elif remaining_space > 0:
+            header += "..."
+        break
+print(header)
+
+Q
+
+text = input().lower()
+text = "".join(text.split())
+print("YES" if text == text[::-1] else "NO")
+
+R
+
+line = input()
+current_digit = line[0]
+count = 1
+
+for i in range(1, len(line)):
+    if line[i] == current_digit:
+        count += 1
+    else:
+        print(current_digit, count)
+        current_digit = line[i]
+        count = 1
+
+print(current_digit, count)
+
+S
+
+expression = input().split()
+stack = []
+
+for token in expression:
+    if token.isdigit() or (token.startswith('-') and token[1:].isdigit()):
+        stack.append(int(token))
+    else:
+        operand2 = stack.pop()
+        operand1 = stack.pop()
+
+        if token == '+':
+            result = operand1 + operand2
+        elif token == '-':
+            result = operand1 - operand2
+        elif token == '*':
+            result = operand1 * operand2
+
+        stack.append(result)
+
+print(stack[0])
+
+T
+
+
