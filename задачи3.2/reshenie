@@ -1,0 +1,333 @@
+A
+
+print(*sorted(set(input())), sep='')
+
+B 
+
+s1 = set(input())
+s2 = set(input())
+print(*sorted(s1 & s2), sep='')
+
+C 
+
+n = int(input())
+print(*sorted({o for _ in range(n) for o in input().split()}), sep='\n')
+
+D 
+
+n = int(input())
+m = int(input())
+
+mannaya = [input().strip() for _ in range(n)]
+ovsyanaya = [input().strip() for _ in range(m)]
+
+both = 0
+for name in mannaya:
+    if name in ovsyanaya:
+        both += 1
+
+print(both if both > 0 else "Таких нет")
+
+E 
+
+n = int(input())
+m = int(input())
+
+names = {}
+for _ in range(n + m):
+    name = input().strip()
+    if name in names:
+        names[name] += 1
+    else:
+        names[name] = 1
+
+only_one = [name for name in names if names[name] == 1]
+
+print(len(only_one) if only_one else "Таких нет")
+
+F 
+
+n = int(input())
+m = int(input())
+
+names = {}
+
+for _ in range(n + m):
+    name = input().strip()
+    if name in names:
+        names[name] += 1
+    else:
+        names[name] = 1
+
+only_one = sorted([name for name, count in names.items() if count == 1])
+
+if only_one:
+    for name in only_one:
+        print(name)
+else:
+    print("Таких нет")
+
+G 
+
+morse = {
+    'A': '.-', 'B': '-...', 'C': '-.-.', 'D': '-..', 'E': '.', 'F': '..-.',
+    'G': '--.', 'H': '....', 'I': '..', 'J': '.---', 'K': '-.-', 'L': '.-..',
+    'M': '--', 'N': '-.', 'O': '---', 'P': '.--.', 'Q': '--.-', 'R': '.-.',
+    'S': '...', 'T': '-', 'U': '..-', 'V': '...-', 'W': '.--', 'X': '-..-',
+    'Y': '-.--', 'Z': '--..',
+    '0': '-----', '1': '.----', '2': '..---', '3': '...--', '4': '....-',
+    '5': '.....', '6': '-....', '7': '--...', '8': '---..', '9': '----.'
+}
+
+text = input()
+for word in text.split():
+    print(' '.join(morse[char.upper()] for char in word))
+
+H 
+
+n = int(input())
+children = []
+for _ in range(n):
+    line = input()
+    children.append(line.split())
+
+target_porridge = input()
+lovers = []
+
+for child_data in children:
+    name = child_data[0]
+    porridges = child_data[1:]
+    if target_porridge in porridges:
+        lovers.append(name)
+
+if lovers:
+    for lover in sorted(lovers):
+        print(lover)
+else:
+    print("Таких нет")
+
+I 
+
+counts = {}
+while True:
+    line = input()
+    if not line:
+        break
+    words = line.split()
+    for word in words:
+        if word in counts:
+            counts[word] += 1
+        else:
+            counts[word] = 1
+
+for item, count in counts.items():
+    print(item, count)
+
+J 
+
+translit_dict = {
+    'а': 'a', 'б': 'b', 'в': 'v', 'г': 'g', 'д': 'd', 'е': 'e', 'ё': 'e',
+    'ж': 'zh', 'з': 'z', 'и': 'i', 'й': 'i', 'к': 'k', 'л': 'l', 'м': 'm',
+    'н': 'n', 'о': 'o', 'п': 'p', 'р': 'r', 'с': 's', 'т': 't', 'у': 'u',
+    'ф': 'f', 'х': 'kh', 'ц': 'tc', 'ч': 'ch', 'ш': 'sh', 'щ': 'shch',
+    'ы': 'y', 'э': 'e', 'ю': 'iu', 'я': 'ia', 'ъ': '', 'ь': '',
+    'А': 'A', 'Б': 'B', 'В': 'V', 'Г': 'G', 'Д': 'D', 'Е': 'E', 'Ё': 'E',
+    'Ж': 'Zh', 'З': 'Z', 'И': 'I', 'Й': 'I', 'К': 'K', 'Л': 'L', 'М': 'M',
+    'Н': 'N', 'О': 'O', 'П': 'P', 'Р': 'R', 'С': 'S', 'Т': 'T', 'У': 'U',
+    'Ф': 'F', 'Х': 'Kh', 'Ц': 'Tc', 'Ч': 'Ch', 'Ш': 'Sh', 'Щ': 'Shch',
+    'Ы': 'Y', 'Э': 'E', 'Ю': 'Iu', 'Я': 'Ia', 'Ъ': '', 'Ь': ''
+}
+
+text = input()
+result = ''
+for char in text:
+    if char in translit_dict:
+        result += translit_dict[char]
+    else:
+        result += char
+
+print(result)
+
+K 
+
+n = int(input())
+names = [input().strip() for _ in range(n)]
+
+counts = {}
+for name in names:
+    counts[name] = counts.get(name, 0) + 1
+
+result = sum(count for count in counts.values() if count > 1)
+
+print(result)
+
+L
+
+n = int(input())
+surnames = []
+for _ in range(n):
+    surnames.append(input())
+
+counts = {}
+for surname in surnames:
+    if surname in counts:
+        counts[surname] += 1
+    else:
+        counts[surname] = 1
+
+duplicates = []
+for surname, count in counts.items():
+    if count > 1:
+        duplicates.append((surname, count))
+
+duplicates.sort()
+
+if duplicates:
+    for surname, count in duplicates:
+        print(surname + " - " + str(count))
+else:
+    print("Однофамильцев нет")
+
+M
+
+n = int(input())
+today_menu = set()
+for _ in range(n):
+    today_menu.add(input())
+
+m = int(input())
+week_menu = set()
+for _ in range(m):
+    k = int(input())
+    for _ in range(k):
+        week_menu.add(input())
+
+new_dishes = sorted(today_menu - week_menu)
+
+if new_dishes:
+    for dish in new_dishes:
+        print(dish)
+else:
+    print("Готовить нечего")
+
+N
+
+n = int(input())
+products = []
+for _ in range(n):
+    products.append(input())
+
+m = int(input())
+available_dishes = []
+
+for _ in range(m):
+    dish = input()
+    ingredients_count = int(input())
+    ingredients = []
+    for _ in range(ingredients_count):
+        ingredients.append(input())
+
+    can_make = True
+    for ingredient in ingredients:
+        if ingredient not in products:
+            can_make = False
+            break
+
+    if can_make:
+        available_dishes.append(dish)
+
+available_dishes.sort()
+
+if available_dishes:
+    for dish in available_dishes:
+        print(dish)
+else:
+    print("Готовить нечего")
+
+O
+
+numbers = input().split()
+result = []
+
+for number in numbers:
+    binary = bin(int(number))[2:]
+    digits = len(binary)
+    units = binary.count('1')
+    zeros = binary.count('0')
+
+    stats = {
+        "digits": digits,
+        "units": units,
+        "zeros": zeros
+    }
+    result.append(stats)
+
+print(result)
+
+P
+
+neighbors = set()
+while True:
+    line = input()
+    if not line:
+        break
+    words = line.split()
+    for i in range(len(words)):
+        if words[i] == "зайка":
+            if i > 0:
+                neighbors.add(words[i - 1])
+            if i < len(words) - 1:
+                neighbors.add(words[i + 1])
+
+for neighbor in sorted(neighbors):
+    print(neighbor)
+
+Q
+
+friendships = {}
+while True:
+    line = input()
+    if not line:
+        break
+    person1, person2 = line.split()
+    if person1 not in friendships:
+        friendships[person1] = []
+    if person2 not in friendships:
+        friendships[person2] = []
+    friendships[person1].append(person2)
+    friendships[person2].append(person1)
+
+second_level_friends = {}
+for person in friendships:
+    second_level_friends[person] = set()
+    for friend in friendships[person]:
+        for friend_of_friend in friendships[friend]:
+            if friend_of_friend != person and friend_of_friend not in friendships[person]:
+                second_level_friends[person].add(friend_of_friend)
+
+for person in sorted(friendships.keys()):
+    print(person + ": " + ", ".join(sorted(second_level_friends[person])))
+
+S
+
+n = int(input())
+toys = {}
+
+for _ in range(n):
+    line = input()
+    name, toy_list = line.split(': ')
+    toy_list = toy_list.split(', ')
+    for toy in toy_list:
+        if toy in toys:
+            toys[toy].append(name)
+        else:
+            toys[toy] = [name]
+
+unique_toys = []
+for toy, owners in toys.items():
+    if len(set(owners)) == 1:
+        unique_toys.append(toy)
+
+for toy in sorted(unique_toys):
+    print(toy)
+
